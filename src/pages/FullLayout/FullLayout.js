@@ -24,6 +24,9 @@ import {
 } from "../../pages";
 import "../../App.css";
 import { useStateContext } from "../../contexts/ContextProvider";
+import Login from "../Auth/Login";
+import NotFoundPage from "../Dummy/NotFoundPage";
+import AccessDenyed from "../Dummy/AccessDenyed";
 
 const FullLayout = () => {
   const { activeMenu, themeSettings, setThemeSettings, currentColor } =
@@ -75,7 +78,7 @@ const FullLayout = () => {
           {themeSettings && <ThemeSettings />}
           <Routes>
             {/* Dashboard */}
-            {/* <Route path="/" element={<Ecommerce />} /> */}
+            {/* <Route path="/" element={<Login />} /> */}
             <Route path="/ecommerce" element={<Ecommerce />} />
 
             {/* Pages */}
@@ -102,6 +105,7 @@ const FullLayout = () => {
             <Route path="/color-maping" element={<ColorMapping />} />
             <Route path="/pyramid" element={<Pyramid />} />
             <Route path="/stacked" element={<Stacked />} />
+            <Route path="/*" element={<AccessDenyed />} />
           </Routes>
         </div>
       </div>
