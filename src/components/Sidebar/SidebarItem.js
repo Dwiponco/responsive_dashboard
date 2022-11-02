@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FiChevronDown } from "react-icons/fi";
 
 import { useStateContext } from "../../contexts/ContextProvider";
 
 const SidebarItem = ({ link }) => {
-  const location = useLocation();
+  // const location = useLocation();
   const { activeMenu, setActiveMenu, screenSize, currentColor } =
     useStateContext();
   const [open, setOpen] = useState(false);
@@ -27,10 +27,10 @@ const SidebarItem = ({ link }) => {
           onClick={() => {
             setOpen(!open);
           }}
-          style={{
-            backgroundColor: link.state === location.state ? currentColor : "",
-          }}
-          className={link.state === location.state ? activeLink : normalLink}
+          // style={{
+          //   backgroundColor: link.state === location.state ? currentColor : "",
+          // }}
+          className={normalLink}
         >
           {link.icon}
           <span className="capitalize flex justify-start w-full">
@@ -38,7 +38,7 @@ const SidebarItem = ({ link }) => {
           </span>
           <FiChevronDown className="mr-4" style={{ width: "40px" }} />
         </NavLink>
-        <div className={open ? "bg-gray-50 ml-[10px]" : "hidden"}>
+        <div className={open ? " ml-[10px]" : "hidden"}>
           {link.children.map((d, i) => (
             <SidebarItem link={d} key={i} />
           ))}
